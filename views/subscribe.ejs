@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Subscribe to Movie App</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="https://khalti.s3.ap-south-1.amazonaws.com/KPG/dist/2020.12.17.0.0.0/khalti-checkout.iffe.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Subscribe to Movie App</h1>
+  </header>
+  <main>
+    <form id="subscriptionForm">
+      <label for="user_id">User ID:</label>
+      <input type="text" id="user_id" name="user_id" required>
+      <br>
+      <label for="plan_id">Subscription Plan:</label>
+      <select id="plan_id" name="plan_id" required>
+        <% plans.forEach(plan => { %>
+          <option value="<%= plan._id %>"><%= plan.plan_name %> - <%= plan.durationMonth %> months - Rs. <%= plan.price %></option>
+        <% }) %>
+      </select>
+      <br>
+      <button type="submit">Subscribe</button>
+    </form>
+
+    <div id="khaltiCheckout"></div>
+  </main>
+
+  <script>
+    document.getElementById('subscriptionForm').addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      const formData = new FormData(event.target);
+      const response = await fetch('/subscribe', {
+        method: 'POST',
+        body: formData
+      });
+
+      const data = await response.json();
+      if (data.success) {
+        const config = {
+          publicKey: '<YOUR_KHALTI_PUBLIC_KEY>',
+          productIdentity: data.transactionId,
+          productName: 'Movie App Subscription',
+          productUrl: 'http://localhost:3000',
+          amount: data.amount * 100, // Khalti amount in paisa
+          payable: true,
+          disabled: false,
+          multiple: false,
+          eventHandler: {
+            onSuccess (payload) {
+              fetch('/khalti-verify', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                  token: payload.token,
+                  amount: data.amount * 100,
+                  transactionId: data.transactionId
+                })
+              }).then(response => response.json())
+                .then(data => {
+                  if (data.success) {
+                    alert('Payment successful');
+                  } else {
+                    alert('Payment failed');
+                  }
+                });
+            },
+            onError (error) {
+              console.log(error);
+            },
+            onClose () {
+              console.log('Widget is closing');
+            }
+          }
+        };
+
+        const checkout = new KhaltiCheckout(config);
+        checkout.show({ mode: 'popup' });
+      } else {
+        alert('Failed to initiate payment');
+      }
+    });
+  </script>
+</body>
+</html>
