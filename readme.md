@@ -51,4 +51,7 @@ Replace your_khalti_api_key with the API key from your Khalti account.
 ```bash
 npm start
 ```
-Your server should now be running at http://localhost:5000.
+
+Your server should now be running at http://localhost:5000
+
+To purchase the subsecription http://localhost:5000/payment/add.
