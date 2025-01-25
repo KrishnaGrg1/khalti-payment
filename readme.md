@@ -28,12 +28,12 @@ git clone https://github.com/yourusername/khalti-subscription-payment.git
 cd khalti-subscription-payment
 
 
-### 2. Install dependencies
+2. Install dependencies
 Run the following command to install all required dependencies:
 ```bash
 npm install
 
-### 3. Setup environment variables
+ 3. Setup environment variables
 Create a .env file in the root directory and configure the following environment variables:
 
 ```bash
@@ -42,7 +42,7 @@ KHALTI_API_KEY=your_khalti_api_key                     # Khalti API key
 BACKEND_URI=http://localhost:{port}                       # Backend server URL
 FRONTEND_URI=http://localhost:3000                      # Frontend URL
 
-### 4. Start the server
+4. Start the server
 
 ```bash
 npm start
