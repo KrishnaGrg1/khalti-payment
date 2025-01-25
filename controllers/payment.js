@@ -39,11 +39,18 @@ const initiatePayment = catchAsync(async (req, res) => {
     });
 
     // Return the success response
-    res.json({
-      success: true,
-      purchasedPlan,
-      payment: paymentInitate
-    });
+    // res.json({
+    //   success: true,
+    //   purchasedPlan,
+    //   payment: paymentInitate
+    // });
+    // res.redirect(paymentInitate.return_url, {
+    //   success: true,
+    //   paymentUrl: paymentInitate.payment_url, // Assuming this is returned from Khalti
+    //   message: "Payment initiation successful. You will be redirected shortly.",
+  
+    // });
+    res.redirect(paymentInitate.payment_url);
   } catch (error) {
     // Handle error during Khalti payment initialization
     console.error("Error initializing Khalti payment:", error.message || error);

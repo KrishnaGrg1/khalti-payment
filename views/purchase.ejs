@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Payment Page</title>
-  <link rel="stylesheet" href="css/purchase.css"> <!-- Link to any CSS file you need -->
+  <link rel="stylesheet" href="/css/purchase.css"> <!-- Link to any CSS file you need -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
   <link rel="icon" href="/favicon.ico">
 </head>
@@ -36,7 +36,7 @@
       <!-- Handling success or error messages -->
       <% if (message) { %>
         <div class="alert <%= message.type %>">
-          <%= message.text %>
+          <%= message %>
         </div>
       <% } %>
     </div>
