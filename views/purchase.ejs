@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment Page</title>
+  <link rel="stylesheet" href="css/purchase.css"> <!-- Link to any CSS file you need -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="icon" href="/favicon.ico">
+</head>
+<body>
+  <div class="container">
+    <div class="payment-box">
+      <h1>Choose Your Subscription Plan</h1>
+
+      <form action="/payment/add" method="POST" id="paymentForm">
+        <!-- Plan selection dropdown -->
+        <div class="form-group">
+          <label for="planid">Subscription Plan:</label>
+          <select name="planid" id="planid" required>
+            <% subscriptionPlans.forEach(plan => { %>
+              <option value="<%= plan._id %>">
+                <%= plan.plan_name %> - <%= plan.price %> NPR
+              </option>
+            <% }); %>
+          </select>
+        </div>
+
+        <!-- Hidden input for payment method (always Khalti) -->
+        <input type="hidden" name="paymentMethod" value="khalti">
+
+        <!-- Submit Button -->
+        <button type="submit" class="submit-btn">Proceed with Khalti Payment</button>
+      </form>
+
+      <!-- Handling success or error messages -->
+      <% if (message) { %>
+        <div class="alert <%= message.type %>">
+          <%= message.text %>
+        </div>
+      <% } %>
+    </div>
+  </div>
+
+  
+</body>
+</html>

@@ -1,0 +1,115 @@
+/* General Body Styling */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f7f7f7;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  /* Container to center the payment form */
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+  }
+  
+  /* Styling the payment box */
+  .payment-box {
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 30px;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+  }
+  
+  /* Header style */
+  h1 {
+    color: #333;
+    font-size: 22px;
+    margin-bottom: 20px;
+  }
+  
+  /* Form group styling */
+  .form-group {
+    margin-bottom: 20px;
+    text-align: left;
+  }
+  
+  label {
+    font-weight: 500;
+    color: #555;
+  }
+  
+  select {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 5px;
+    background-color: #fafafa;
+  }
+  
+  select:focus {
+    outline: none;
+    border-color: #007bff;
+  }
+  
+  /* Submit Button Styling */
+  .submit-btn {
+    background-color: #007bff;
+    color: white;
+    font-size: 16px;
+    padding: 12px;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .submit-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Alert box for success/error messages */
+  .alert {
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  .alert.success {
+    background-color: #28a745;
+    color: white;
+  }
+  
+  .alert.error {
+    background-color: #dc3545;
+    color: white;
+  }
+  
+  /* Responsive Styling */
+  @media (max-width: 600px) {
+    .payment-box {
+      padding: 20px;
+      width: 90%;
+    }
+  
+    h1 {
+      font-size: 20px;
+    }
+  
+    .submit-btn {
+      font-size: 14px;
+    }
+  }
+  
