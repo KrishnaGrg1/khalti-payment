@@ -30,20 +30,22 @@ cd khalti-subscription-payment
 
 2. Install dependencies
 Run the following command to install all required dependencies:
-```bash
-npm install
 
- 3. Setup environment variables
+bash
+Copy
+npm install
+3. Setup environment variables
 Create a .env file in the root directory and configure the following environment variables:
 
-```bash
+dotenv
+Copy
 MONGO_URI=mongodb://localhost:27017/your_database_name  # MongoDB connection string
 KHALTI_API_KEY=your_khalti_api_key                     # Khalti API key
-BACKEND_URI=http://localhost:{port}                       # Backend server URL
+BACKEND_URI=http://localhost:5000                       # Backend server URL
 FRONTEND_URI=http://localhost:3000                      # Frontend URL
-
+Replace your_khalti_api_key with the API key from your Khalti account.
 4. Start the server
-
-```bash
+bash
+Copy
 npm start
-
+Your server should now be running at http://localhost:5000.
