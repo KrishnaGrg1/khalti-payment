@@ -54,4 +54,4 @@ npm start
 
 Your server should now be running at http://localhost:5000
 
-To purchase the subsecription http://localhost:5000/payment/add.
+To purchase the subscription http://localhost:5000/payment/add.
